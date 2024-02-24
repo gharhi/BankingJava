@@ -26,7 +26,7 @@ public class Bank {
 	}
 	public String displayAccountBalance(String num) {
 		if (acNum.equals(num)) {
-			String detail="Hi "+acName+"Account Balance: "+balance;
+			String detail="Hi "+acName+" Account Balance: "+balance;
 			System.out.println(detail);
 			return detail;
 		}else {

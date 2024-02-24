@@ -14,7 +14,7 @@ import org.junit.Test;
 public class TestClass {
 	private Bank bank;
 	
-	@Before //Creation of Bank Object
+	@Before //Creation of new Bank Object
 	public void setUp() {
 		bank = new Bank("Testone","25337");
 
