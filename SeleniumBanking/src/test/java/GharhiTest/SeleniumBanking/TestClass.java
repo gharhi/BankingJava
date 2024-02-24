@@ -14,41 +14,44 @@ import org.junit.Test;
 public class TestClass {
 	private Bank bank;
 	
-	@Before
+	@Before //Creation of Bank Object
 	public void setUp() {
-		bank = new Bank("Testone",25337);
+		bank = new Bank("Testone","25337");
 
 	}
-	@Test
+	@Test   //Verify that user is able to deposit amount successfully
 	public void testDeposit() {
 		bank.deposit(2000);
-		assertEquals(2000, bank.getBalance(),0.0);
+		bank.deposit(250);
+		assertEquals(2250, bank.getBalance(),0.0);
 	}
+	//Verify the ability of user to deposit an invalid amount
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidDepositTest() {
 		bank.deposit(0);
 	}
-	@Test
+	@Test    //Verify that user is able to deposit amount successfully
 	public void testWithdrawal() {
 		bank.deposit(15000);
 		bank.withdrawal(3500);
 		assertEquals(11500, bank.getBalance(),0.0);
 	}
+	//Verify the ability of user to withdraw an invalid amount
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidWithdrawalTest() {
 		bank.deposit(1500);
 		bank.withdrawal(3500);
 	}
-	//@Test
-	//public void testBalanceEnquiry() {
-		//bank.deposit(25000);
-		//String expDetails="Hi"+bank.getName()+"Account Balance: "+bank.getBalance();
-		//assertTrue(expDetails.equalsIgnoreCase(bank.balanceEnquiry(25337)));
-	//}
+	@Test //Verify the display account balance function for a valid account number
+	public void testAccountBalance() {
+		bank.deposit(25000);
+		assertTrue(bank.displayAccountBalance("25337").contains("Hi"));
+	}
+	//Verify the display account balance function for an invalid account number
 	@Test(expected=IllegalArgumentException.class)
 	public void testInvalidBalanceEnquiry() {
 		bank.deposit(25000);
-		bank.balanceEnquiry(253);
+		bank.displayAccountBalance("253");
 	}
 
 }

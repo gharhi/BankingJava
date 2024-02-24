@@ -5,12 +5,12 @@ public class Bank {
 	
 	private String acName;
 	private double balance;
-	private long acNum;
+	private String acNum;
 	
-	public Bank(String acName, long acNum) {
+	public Bank(String acName, String acNum) {
 		this.acName = acName;
 		this.balance = 0.0;
-		this.acNum = 0;
+		this.acNum = acNum;
 	}
 	
 
@@ -21,12 +21,12 @@ public class Bank {
 	public double getBalance() {
 		return balance;
 	}
-	public long getAccNum() {
+	public String getAccNum() {
 		return acNum;
 	}
-	public String balanceEnquiry(long acNum) {
-		if (acNum==this.getAccNum()) {
-			String detail="Hi"+acName+"Account Balance: "+balance;
+	public String displayAccountBalance(String num) {
+		if (acNum.equals(num)) {
+			String detail="Hi "+acName+"Account Balance: "+balance;
 			System.out.println(detail);
 			return detail;
 		}else {
